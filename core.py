@@ -44,8 +44,10 @@ def download_mods(directory: str):
 
 def lowercase_all_mods(directory: str):
     if sys.platform == "linux":
+        current_dir = os.getcwd()
+        print("Proceeding to lowercase all mods. May take a while.")
         os.system((f"cd {directory}" + "&& find . -depth -exec rename 's/(.*)\/([^\/]*)/$1\/\L$2/' {} \;"))
-
+        os.chdir(current_dir)
 
 def symlink_all_mods(workshop_directory: str, server_directory: str):
     for file in os.listdir(workshop_directory):
@@ -108,7 +110,6 @@ def main():
             setup_download_commands(STEAM_USERNAME)
             print("Proceeding to download mods.")
             download_mods(STEAMCMD_DIRECTORY)
-            print("Proceeding to lowercase all mods. May take a while.")
             lowercase_all_mods(WORKSHOP_DIRECTORY)
             symlink_all_mods(WORKSHOP_DIRECTORY, SERVER_DIRECTORY)
             generate_mod_string()
