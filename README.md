@@ -26,4 +26,4 @@ You need to login into the Steam account you want to use for steamcmd at least o
 ## Usage
 Set the variables at the top of the Python script.
 Run the Python script through a terminal of your choosing with `python core.py` or `python3 core.py` and use the menu options.
-
+You may also have to run the steamcmd download multiple times if you're dealing with large mods (1GB +) in order to deal with its limitations.
