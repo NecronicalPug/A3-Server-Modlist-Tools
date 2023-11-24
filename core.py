@@ -121,7 +121,7 @@ def main():
         elif menu == "7":
             generate_mod_string()
         elif menu == "8":
-            delete_unused_mods(WORKSHOP_DIRECTORY, SERVER_DIRECTORY)
+            delete_mods(WORKSHOP_DIRECTORY, SERVER_DIRECTORY)
         elif menu == "9":
             sys.exit()
         else:
