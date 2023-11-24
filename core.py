@@ -110,6 +110,7 @@ def main():
             setup_download_commands(STEAM_USERNAME)
             print("Proceeding to download mods.")
             download_mods(STEAMCMD_DIRECTORY)
+            download_mods(STEAMCMD_DIRECTORY)
             lowercase_all_mods(WORKSHOP_DIRECTORY)
             symlink_all_mods(WORKSHOP_DIRECTORY, SERVER_DIRECTORY)
             generate_mod_string()
