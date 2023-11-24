@@ -24,5 +24,6 @@ To use all the scripts, you'd want a Windows/Linux server setup with steamcmd al
 You need to login into the Steam account you want to use for steamcmd at least once before using any scripts, that account must own Arma 3 in order to download workshop mods.
 
 ## Usage
+Set the variables at the top of the Python script.
 Run the Python script through a terminal of your choosing with `python core.py` or `python3 core.py` and use the menu options.
 
