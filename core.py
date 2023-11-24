@@ -68,28 +68,21 @@ def generate_mod_string():
         f.write(container)
 
 
-def delete_unused_mods(workshop_directory: str, server_directory: str):
-    with open("modlist.txt", "r") as f:
-        data = f.readlines()
+def delete_mods(workshop_directory: str, server_directory: str):
 
-    for i in data:
-        i = i.rstrip('\n')
-        for d in os.listdir(workshop_directory):
-            if not (i == d):
-                print(f"Removing {workshop_directory}{d}")
-                try:
-                    shutil.rmtree(f"{workshop_directory}{d}")
-                except FileNotFoundError:
-                    continue
-
-    for i in data:
-        i = i.rstrip('\n')
-        for d in os.listdir(server_directory):
-            if os.path.islink(d) and not(i == d):
-                print(f"Removing {server_directory}{d}")
-                os.remove(f"{server_directory}{d}")
-            else:
-                continue
+    for d in os.listdir(workshop_directory):
+        print(f"Removing {workshop_directory}{d}")
+        try:
+            shutil.rmtree(f"{workshop_directory}{d}")
+        except FileNotFoundError:
+            continue
+        
+    for d in os.listdir(server_directory):
+        if os.path.islink(d) and not(i == d):
+            print(f"Removing {server_directory}{d}")
+            os.remove(f"{server_directory}{d}")
+        else:
+            continue
 
 
 def main():
@@ -103,7 +96,7 @@ def main():
         5. Lowercase all mods.
         6. Symlink all mods.
         7. Generate mod string.
-        8. Clean up unused mods.
+        8. Delete all mods.
         9. Exit.\n"""))
         if menu == "1":
             iterate_through_html(MODLIST_DIRECTORY)
