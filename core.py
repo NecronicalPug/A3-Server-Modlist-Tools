@@ -4,6 +4,7 @@ import sys
 
 MODLIST_DIRECTORY = "modlist.html"
 STEAM_USERNAME = "username"
+ROOT_STEAM_DIRECTORY = "/root/Steam/"
 STEAMCMD_DIRECTORY = "/root/Steam/steamcmd.sh"
 WORKSHOP_DIRECTORY = "/root/Steam/steamapps/workshop/content/107410/"
 SERVER_DIRECTORY = "/root/Steam/steamapps/common/Arma 3 Server/"
@@ -22,12 +23,12 @@ def iterate_through_html(directory: str):
         f.writelines(mod_ids)
 
 
-def setup_download_commands(username: str):
-    with open("commands.txt", "w") as f:
+def setup_download_commands(directory: str, username: str):
+    with open(f"{directory}commands.txt", "w") as f:
         f.write(f"login {username}")
 
     with open("modlist.txt") as f:
-        with open("commands.txt", "a") as d:
+        with open(f"{directory}commands.txt", "a") as d:
             data = f.readlines()
             for i in data:
                 if i == "0\n":
@@ -100,7 +101,7 @@ def main():
         9. Exit.\n"""))
         if menu == "1":
             iterate_through_html(MODLIST_DIRECTORY)
-            setup_download_commands(STEAM_USERNAME)
+            setup_download_commands(ROOT_STEAM_DIRECTORY, STEAM_USERNAME)
             print("Proceeding to download mods.")
             download_mods(STEAMCMD_DIRECTORY)
             download_mods(STEAMCMD_DIRECTORY)
